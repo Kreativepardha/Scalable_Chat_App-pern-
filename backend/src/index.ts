@@ -6,6 +6,7 @@ import 'dotenv/config'
 import { mainRouter } from './routes/mainRouter'
 import { Server } from 'socket.io'
 import { createServer } from 'http'
+import { setupSocket } from './socket'
 
 
 const app:Application = express();
@@ -18,6 +19,8 @@ const io = new Server(server, {
 		origin: "*"
 	}
 })
+setupSocket(io)
+export {io}
 
 app.use(cors())
 app.use(express.json())
