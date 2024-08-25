@@ -17,6 +17,7 @@ export default async function Home() {
 
   return (
    <div className="bg-slate-200 flex justify-center items-center h-screen">
+    
     {
       !user ? (
         <div className="flex flex-col gap-2 ">
@@ -31,8 +32,12 @@ export default async function Home() {
                 Dashboard
               </Button>
             </Link>      
+           
             <LogoutButton />
         </div>
+        <p className="flex w-full z-99">
+             {JSON.stringify(user?.id)}
+          </p>
       </div>
       )}
 

@@ -29,7 +29,7 @@ export const authOption: AuthOptions = {
         async signIn({
             user, account
         }: {
-            user: CustomUser;
+            user: User | CustomUser;
             account: Account
         }){
             try {
@@ -52,8 +52,7 @@ export const authOption: AuthOptions = {
                     `/auth/error?message=Something went wrong.please try again!`
                   );
             }
-        }
-    },
+        },
         async jwt({ token, user }) {
             if(user){
                 token.user = user;
@@ -66,6 +65,7 @@ export const authOption: AuthOptions = {
             session.user = token.user as CustomUser;
             return session;
         },
+    },
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID!,
